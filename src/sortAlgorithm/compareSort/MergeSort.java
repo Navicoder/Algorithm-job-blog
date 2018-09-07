@@ -17,7 +17,21 @@ public class MergeSort {
         Merge(arr, left, mid, right);
     }
 
+//    Exception in thread "main" java.lang.StackOverflowError.因为 left right mid 这些取的还是原始数组的
+//    // 递归实现的归并排序(自顶向下)
+//    public static void MergeSortRecursion(int arr[]){
+//        int left =0;
+//        int right =arr.length-1;
+//        if (left == right)    // 当待排序的序列长度为1时，递归开始回溯，进行merge操作
+//            return;
+//        int mid = (left + right) / 2;
+//        MergeSortRecursion(arr);
+//        MergeSortRecursion(arr);
+//        Merge(arr, left, mid, right);
+//    }
+
     // 非递归(迭代)实现的归并排序(自底向上)
+    // TODO 不懂
     public static void MergeSortIteration(int arr[], int len){
         int left, mid, right;// 子数组索引,前一个为arr[left...mid]，后一个子数组为arr[mid+1...right]
         // 子数组的大小i初始为1，每轮翻倍
@@ -54,9 +68,10 @@ public class MergeSort {
     }
 
     public static void main(String[] args) {
-        int[] arr = ArrUtils.generalRandomOrder(11,5000);
+        int[] arr = ArrUtils.generalRandomOrder(200,50000);
         int[] arr2= ArrUtils.copyArr(arr);
         MergeSort.MergeSortIteration(arr2,arr2.length);
         ArrUtils.printArr(arr2);
+
     }
 }
