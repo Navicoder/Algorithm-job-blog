@@ -69,7 +69,7 @@ public class ShellSort {
         }
 
         long ll = System.currentTimeMillis()-l;
-        System.out.println("希尔排序shellSort:"+(ll)+"ms,"+(ll/1000)+"秒"+(ll/1000/60)+"分钟"+(ll/1000/60/60)+"小时");
+        System.out.println("希尔排序shellSort:size():"+arr.length+"耗时:"+(ll)+"ms,"+(ll/1000)+"秒"+(ll/1000/60)+"分钟"+(ll/1000/60/60)+"小时");
     }
     public static void shellSortError2(int[] arr){
         long l = System.currentTimeMillis();
@@ -90,7 +90,7 @@ public class ShellSort {
             gap = (gap-1)/3;
         }
         long ll = System.currentTimeMillis()-l;
-        System.out.println("希尔排序2:"+(ll)+"ms,"+(ll/1000)+"秒"+(ll/1000/60)+"分钟"+(ll/1000/60/60)+"小时");
+        System.out.println("希尔排序2:size():"+arr.length+"耗时:"+(ll)+"ms,"+(ll/1000)+"秒"+(ll/1000/60)+"分钟"+(ll/1000/60/60)+"小时");
     }
 
     public static void shellSortError(int[] arr){
@@ -106,7 +106,7 @@ public class ShellSort {
             }
         }
         long ll = System.currentTimeMillis()-l;
-        System.out.println("希尔排序2:"+(ll)+"ms,"+(ll/1000)+"秒"+(ll/1000/60)+"分钟"+(ll/1000/60/60)+"小时");
+        System.out.println("希尔排序2:size():"+arr.length+"耗时:"+(ll)+"ms,"+(ll/1000)+"秒"+(ll/1000/60)+"分钟"+(ll/1000/60/60)+"小时");
     }
 
     public static void main(String[] args) {

@@ -4,17 +4,33 @@ import utils.ArrUtils;
 
 /**
  * 合并排序 分为递归实现与非递归(迭代)实现
+ *
+ * // 分类 -------------- 内部比较排序
+ * // 数据结构 ---------- 数组
+ * // 最差时间复杂度 ---- O(nlogn)
+ * // 最优时间复杂度 ---- O(nlogn)
+ * // 平均时间复杂度 ---- O(nlogn)
+ * // 所需辅助空间 ------ O(n)
+ * // 稳定性 ------------ 稳定
+ *
  */
 public class MergeSort {
 
     // 递归实现的归并排序(自顶向下)
-    public static void MergeSortRecursion(int arr[], int left, int right){
+    private static void MergeSortRecursion(int arr[], int left, int right){
         if (left == right)    // 当待排序的序列长度为1时，递归开始回溯，进行merge操作
             return;
         int mid = (left + right) / 2;
         MergeSortRecursion(arr, left, mid);
         MergeSortRecursion(arr, mid + 1, right);
         Merge(arr, left, mid, right);
+    }
+    // 提供打印时间而已
+    public static void MergeSortRecursion(int arr[]){
+        long l = System.currentTimeMillis();
+        MergeSort.MergeSortRecursion(arr,0,arr.length-1);
+        long ll = System.currentTimeMillis()-l;
+        System.out.println("归并排序MergeSortRecursion:size():"+arr.length+"耗时:"+(ll)+"ms,"+(ll/1000)+"秒"+(ll/1000/60)+"分钟"+(ll/1000/60/60)+"小时");
     }
 
 //    Exception in thread "main" java.lang.StackOverflowError.因为 left right mid 这些取的还是原始数组的
@@ -45,6 +61,7 @@ public class MergeSort {
                 left = right + 1;               // 前一个子数组索引向后移动
             }
         }
+
     }
     // 合并两个已排好序的数组arr[left...mid]和arr[mid+1...right]
     public static void Merge(int arr[], int left, int mid, int right){
@@ -70,6 +87,7 @@ public class MergeSort {
     public static void main(String[] args) {
         int[] arr = ArrUtils.generalRandomOrder(200,50000);
         int[] arr2= ArrUtils.copyArr(arr);
+        long l = System.currentTimeMillis();
         MergeSort.MergeSortIteration(arr2,arr2.length);
         ArrUtils.printArr(arr2);
 

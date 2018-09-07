@@ -28,7 +28,7 @@ public class BubbleSort {
             }
         }
         long ll = System.currentTimeMillis()-l;
-        System.out.println("冒泡排序:"+(ll)+"ms,"+(ll/1000)+"秒"+(ll/1000/60)+"分钟"+(ll/1000/60/60)+"小时");
+        System.out.println("冒泡排序:size():"+arr.length+"耗时:"+(ll)+"ms,"+(ll/1000)+"秒"+(ll/1000/60)+"分钟"+(ll/1000/60/60)+"小时");
     }
 
     /**
