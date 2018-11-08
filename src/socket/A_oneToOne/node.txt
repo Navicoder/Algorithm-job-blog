@@ -1,0 +1,13 @@
+一个服务端只能同时接受一个客户端   当多个客户端连接时 第二个会报错
+
+java.net.SocketException: Connection reset
+	at java.net.SocketInputStream.read(SocketInputStream.java:210)
+	at java.net.SocketInputStream.read(SocketInputStream.java:141)
+	at sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:284)
+	at sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:326)
+	at sun.nio.cs.StreamDecoder.read(StreamDecoder.java:178)
+	at java.io.InputStreamReader.read(InputStreamReader.java:184)
+	at java.io.BufferedReader.fill(BufferedReader.java:161)
+	at java.io.BufferedReader.readLine(BufferedReader.java:324)
+	at java.io.BufferedReader.readLine(BufferedReader.java:389)
+	at socket.MyClient2.main(MyClient2.java:39)

@@ -2,6 +2,10 @@ package sortAlgorithm.compareSort;
 
 import utils.ArrUtils;
 
+import java.lang.reflect.Type;
+import java.util.Date;
+import java.util.Dictionary;
+
 // 分类 ------------ 内部比较排序
 // 数据结构 --------- 数组
 // 最差时间复杂度 ---- 每次选取的基准都是最大（或最小）的元素，导致每次只划分出了一个分区，需要进行n-1次划分才能结束递归，时间复杂度为O(n^2)
@@ -40,18 +44,18 @@ public class QuickSort {
     //坐在马桶 http://developer.51cto.com/art/201403/430986.htm
     private static void quicksort(int[] arr,int left,int right){
 
-        if(left>right)
+        if(left >= right)
             return;
-        int temp=arr[left]; //temp中存的就是基准数
+        int temp = arr[left]; //temp中存的就是基准数
         int i=left,j=right;
-        while(i!=j){//4 继续向中间靠拢，直至汇合。
+        while( i!=j ){//4 继续向中间靠拢，直至汇合。
             //1 顺序很重要，要先从右边开始找,直至找到比temp即[子]数组的左边界小的位置
             while(arr[j]>=temp && i<j)
                 j--;
             //2 再找左边的,直至找到比temp即[子]数组的左边界大的位置
             while(arr[i]<=temp && i<j)
                 i++;
-            //3 交换两个数在数组中的位置
+            //3  执行到这说明 {arr[j]< temp;arr[i]>temp}  交换两个数在数组中的位置
             if(i<j){
                 ArrUtils.swap(arr,i,j);
             }
@@ -69,8 +73,6 @@ public class QuickSort {
         long ll = System.currentTimeMillis()-l;
         System.out.println("快速排序quicksort:size():"+arr.length+"耗时:"+(ll)+"ms,"+(ll/1000)+"秒"+(ll/1000/60)+"分钟"+(ll/1000/60/60)+"小时");
     }
-
-
 
     public static void main(String[] args) {
         int[] arr = ArrUtils.generalRandomOrder(10,5000);
