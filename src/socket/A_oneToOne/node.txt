@@ -1,3 +1,6 @@
+Socket类表示一个客户端socket，相应的ServerSocket类表示了一个服务器端应用
+
+
 一个服务端只能同时接受一个客户端   当多个客户端连接时 第二个会报错
 
 java.net.SocketException: Connection reset
