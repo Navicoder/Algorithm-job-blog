@@ -3,6 +3,8 @@ package sortAlgorithm.compareSort;
 import utils.ArrUtils;
 
 /**
+ * 每次遍历将大值挨个向右交换，一轮遍历后 最大值就到了最后边;i++之后重复操作
+ *
  * // 分类 -------------- 内部比较排序
  * // 数据结构 ---------- 数组
  * // 最差时间复杂度 ---- O(n^2)
