@@ -36,9 +36,8 @@ public class ArrUtils {
         for (int i = 0; i < sizeRandom; i++) {
             int ra = r.nextInt(size-1);
             arr[ra] = ra;
-
         }
-            return arr;
+        return arr;
     }
 
     /**
