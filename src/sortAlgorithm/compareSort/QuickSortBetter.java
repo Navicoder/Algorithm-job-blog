@@ -15,16 +15,21 @@ import java.util.Random;
  * 测试数据分析：针对随机数组，使用三数取中选择枢轴+插排，效率还是可以提高一点，
  * 针对已排序的数组，是没有任何用处的。因为待排序序列是已经有序的，那么每次划分只能使待排序序列减一。此时，插排是发挥不了作用的。所以这里看不到时间的减少。
  * 另外，三数取中选择枢轴+插排还是不能处理重复数组
+ *
+ * 优化2：在一次分割结束后，可以把与Key相等的元素聚在一起，继续下次分割时，不用再对与key相等元素分割
+ *
  */
 public class QuickSortBetter {
-    // 三数取中（median-of-three）+ 插入
-    public static void quickSort3(int[] arr, int left, int right) {
+    // 优化1：三数取中（median-of-three）+ 插入
+    public static void quickSort1(int[] arr, int left, int right) {
         if (left >= right) return;
 
         if (right - left + 1 < 10) {//当数组长度小于10时,用插入排序
-            // InsertSort.insertSort(arr,left,right);
+            System.out.println("插入排序:" + (right - left + 1));
+            InsertSort.insertSort(arr, left, right);
             return;
-        }//else时，正常执行快排
+        }
+        //else时，正常执行快排
 
 
         //int povit = arr[left];//将数组首元素作为标准值
@@ -59,13 +64,19 @@ public class QuickSortBetter {
         //i和j 必相等
         arr[left] = arr[i];
         arr[i] = povit;
-        quickSort3(arr, left, i - 1);
-        quickSort3(arr, i + 1, right);
+        quickSort1(arr, left, i - 1);
+        quickSort1(arr, i + 1, right);
     }
 
 
     public static void main(String[] args) {
+        //int[] arr={4,2,7,3,10};
+        int[] arr = ArrUtils.generalRandomOrder(15, 1000);
 
+
+        System.out.println("=============================================================");
+        QuickSortBetter.quickSort1(arr, 0, arr.length - 1);//1亿 17秒 5亿 82.240秒
+        ArrUtils.printArr(arr);
 
     }
 }

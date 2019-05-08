@@ -30,7 +30,7 @@ public class Test1 {
 
         ShellSort.shellSort(arr5);
         ShellSort.shellSortDichotomy(arr6);
-        InsertSort.insertSort(arr3);
+        InsertSort.insertSort(arr3, 0, arr.length);
         SelectSort.selectSort(arr2);
         BubbleSort.bubbleSort(arr);
         //InsertSort.insertSort2(arr4);

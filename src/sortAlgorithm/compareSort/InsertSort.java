@@ -4,14 +4,14 @@ import utils.ArrUtils;
 
 /**
  * 插入排序是从一个乱序的数组中依次取值，插入到一个已经排好序的数组中。这看起来好像要两个数组才能完成，但如果只想在同一个数组内排序，也是可以的。此时需要想象出两个区域：前方有序区和后方乱序区。
- * <p>
+ *
  * 1    分区。开始时前方有序区只有一个元素，就是数组的第一个元素。然后把从第二个元素开始直到结尾的数组作为乱序区。
- * 从乱序区取第一个元素，把它正确插入到前方有序区中。把它与前方无序区的最后一个元素比较，亦即与它的前一个元素比较。
- * 如果比前一个元素要大，则不需要交换，这时有序区扩充一格，乱序区往后缩减一格，相当于直接拼在有序区末尾。
- * 如果和前一个元素相等，
- * 则继续和前二元素比较、再和前三元素比较……如果往前遍历到头了，发现前方所有元素值都长一个样的话(囧)，那也可以，不需要交换，这时有序区扩充一格，乱序区往后缩减一格，相当于直接拼在有序区末尾;
- * 如果比前一个元素大呢？对不起作为有序区不可能出现这种情况。如果比前一个元素小呢，请看下一点。
- * 如果比前一个元素小，则交换它们的位置。交换完后，继续比较取出元素和它此时的前一个元素，若更小就交换，若相等就比较前一个，直到遍历完成。
+ *          从乱序区取第一个元素，把它正确插入到前方有序区中。把它与前方无序区的最后一个元素比较，亦即与它的前一个元素比较。
+ *          如果比前一个元素要大，则不需要交换，这时有序区扩充一格，乱序区往后缩减一格，相当于直接拼在有序区末尾。
+ *          如果和前一个元素相等，
+ *              则继续和前二元素比较、再和前三元素比较……如果往前遍历到头了，发现前方所有元素值都长一个样的话(囧)，那也可以，不需要交换，这时有序区扩充一格，乱序区往后缩减一格，相当于直接拼在有序区末尾;
+ *              如果比前一个元素大呢？对不起作为有序区不可能出现这种情况。如果比前一个元素小呢，请看下一点。
+ *          如果比前一个元素小，则交换它们的位置。交换完后，继续比较取出元素和它此时的前一个元素，若更小就交换，若相等就比较前一个，直到遍历完成。
  * 2    至此，把乱序区第一个元素正确插入到前方有序区中。
  * 3    往后缩小乱序区范围，继续取缩小范围后的第一个元素，重复第2步骤。直到范围不能缩小为止，排序完成。
  */
@@ -33,12 +33,12 @@ import utils.ArrUtils;
  */
 public class InsertSort {
 
-    public static void insertSort(int[] arr){
+    public static void insertSort(int[] arr, int left, int right) {
         long l = System.currentTimeMillis();
+        if (left + 1 > right) return;
         if (arr != null && arr.length > 0) {
-
             //插入排序
-            for (int i = 1; i < arr.length; i++) {
+            for (int i = left + 1; i <= right; i++) {
                 //arr[j] < arr[j-1]要加在循环条件中，不然会有很多多余的遍历步骤--> 如果arr[j] >= arr[j-1]时，该元素arr[i]已经在它应该的位置了，遍历下一个元素
                 for (int j = i; j >= 1 && arr[j] < arr[j - 1]; j--) {//每当查出需要替换的时候 就替换；一次交换，涉及到三次赋值，所以下边有优化的
                     ArrUtils.swap(arr, j, j - 1);
@@ -95,15 +95,15 @@ public class InsertSort {
 
 
     public static void main(String[] args) {
-        int[] arr = ArrUtils.generalRandomOrder(100000, 89602);
+        int[] arr = ArrUtils.generalRandomOrder(10, 1000);
 
 
         int[] arr2 = ArrUtils.copyArr(arr);// int[] arr2 =arr;
         int[] arr3 = ArrUtils.copyArr(arr);// int[] arr2 =arr;
-        InsertSort.insertSort(arr);
-        InsertSort.insertSort2(arr2);
-        InsertSort.insertSort3(arr3);
+        InsertSort.insertSort(arr, 0, arr.length - 1);
+//        InsertSort.insertSort2(arr2);
+//        InsertSort.insertSort3(arr3);
 
-        // ArrUtils.printArr(arr);
+        ArrUtils.printArr(arr);
     }
 }
